@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bcps"
+authors = [{ name = "fieryhenry" }]
+description = "bcps"
+license = { text = "GPL-3.0-or-later License" }
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    #"Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "License :: OSI Approved :: GPL-3.0-or-later License",
+    "Operating System :: OS Independent",
+]
+dependencies = [""]
+dynamic = ["version"]
+keywords = ["python", "private-server", "battlecats", "battle-cats"]
+
+[project.urls]
+Homepage = "https://github.com/fieryhenry/bcps"
+Repository = "https://github.com/fieryhenry/bcps"
+Issues = "https://github.com/fieryhenry/bcps/issues"
+Changelog = "https://github.com/fieryhenry/bcps/blob/master/CHANGELOG.md"
+
+
+[tool.setuptools.dynamic]
+version = { attr = "bcps.__version__" }
+
+[tool.setuptools]
+package-dir = { "" = "src" }
