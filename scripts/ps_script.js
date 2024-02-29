@@ -1,7 +1,7 @@
 let func_name = "_ZN5Botan11PK_Verifier14verify_messageEPKhjS2_j" // 32 bit
 
-let url_regexes = "{{URL_REGEXES}}" //[".*"];
-let server_url = "{{URL}}" //"https://fieryhenry.serveo.net";
+let url_regexes = "{{URL_REGEXES}}"
+let server_url = "{{URL}}"
 
 if (is_64_bit()) {
     func_name = "_ZN5Botan11PK_Verifier14verify_messageEPKhmS2_m" // 64 bit
