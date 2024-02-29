@@ -1,7 +1,6 @@
 # Battle Cats Private Server
 
-This is a private server for the mobile game Battle Cats. It is a work in
-progress and is not yet complete.
+A base private server for the mobile game The Battle Cats.
 
 ## Installation
 
@@ -118,7 +117,7 @@ python -m bcps
 ```
 
 You can pass in a specific host and port with the `--host` and `--port` options
-respectively.
+respectively. The defaults are shown below.
 
 ```bash
 python -m bcps --host 0.0.0.0 --port 5000
@@ -126,8 +125,10 @@ python -m bcps --host 0.0.0.0 --port 5000
 
 ## Adding your own endpoints
 
-The base server is built with Flask. You can add your own endpoints by creating
-a new blueprint in the `src/bcps/blueprints` directory. You can then add the
-blueprint to the app in the `src/bcps/blueprints/__init__.py` file. There is a
-pre-made mailbox example blueprint in the `src/bcps/blueprints/presents`
-directory.
+The server comes with a mailbox example blueprint in
+`src/bcps/blueprints/presents`. You should read the [Flask
+documentation](https://flask.palletsprojects.com) to understand how to create
+your own endpoints.
+
+You should place your blueprints in the `src/bcps/blueprints` directory. You can
+then add the blueprint to the app in the `src/bcps/blueprints/__init__.py` file.
