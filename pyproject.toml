@@ -18,7 +18,7 @@ classifiers = [
     "License :: OSI Approved :: GPL-3.0-or-later License",
     "Operating System :: OS Independent",
 ]
-dependencies = [""]
+dependencies = ["flask", "argparse", "tbcml"]
 dynamic = ["version"]
 keywords = ["python", "private-server", "battlecats", "battle-cats"]
 
