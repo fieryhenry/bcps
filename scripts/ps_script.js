@@ -32,9 +32,20 @@ function get_new_url(url, handle) {
     let new_url = server_url + "/api" + path;
     if (query) {
         new_url += "?" + query;
+        new_url += "&";
     }
-    new_url += "&req_handle=" + handle;
+    else {
+        new_url += "?";
+    }
+    new_url += "req_handle=" + handle;
     new_url += "&domain=" + domain;
+
+    let package_version = getPackageVersion();
+    let package_name = getPackageName();
+
+    new_url += "&package_version=" + package_version;
+    new_url += "&package_name=" + package_name;
+
     return new_url;
 
 }

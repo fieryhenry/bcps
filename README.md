@@ -135,3 +135,32 @@ your own endpoints.
 
 You should place your blueprints in the `src/bcps/blueprints` directory. You can
 then add the blueprint to the app in the `src/bcps/blueprints/__init__.py` file.
+
+You can access the domain the game sent the original request to with
+the domain query parameter.
+
+```python
+from flask import request
+# ...
+domain = request.args.get("domain")
+```
+
+You can also get the package name and version of the game with the
+`package_name` and `package_version` query parameters.
+
+```python
+from flask import request
+# ...
+package_name = request.args.get("package_name")
+package_version = request.args.get("package_version")
+```
+
+You can also get the game's request handle with the `req_handle` query
+parameter. This probably isn't useful for most people, but it is there if you
+need it.
+
+```python
+from flask import request
+# ...
+req_handle = request.args.get("req_handle")
+```
