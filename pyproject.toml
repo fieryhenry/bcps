@@ -5,14 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "bcps"
 authors = [{ name = "fieryhenry" }]
-description = "bcps"
+description = "A private server for The Battle Cats"
 license = { text = "GPL-3.0-or-later License" }
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    #"Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "License :: OSI Approved :: GPL-3.0-or-later License",
