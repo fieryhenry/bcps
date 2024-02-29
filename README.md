@@ -3,7 +3,7 @@
 A private server for the mobile game The Battle Cats built with
 [Flask](https://flask.palletsprojects.com),
 [tbcml](https://github.com/fieryhenry/tbcml), and
-[Frida](https://frida.re)
+[Frida](https://frida.re).
 
 ## Installation
 
