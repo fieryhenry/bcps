@@ -39,19 +39,6 @@ function get_new_url(url, handle) {
 
 }
 
-function log(message) {
-    Java.perform(function () {
-        var Log = Java.use("android.util.Log");
-        Log.i("tbcml", message);
-        console.info(message);
-    });
-}
-
-function is_64_bit() {
-    return Process.pointerSize === 8;
-}
-
-
 Java.perform(function () {
     let MyActivity = Java.use("jp.co.ponos.battlecats.MyActivity");
 
