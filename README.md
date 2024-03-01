@@ -15,32 +15,32 @@ need a private server.
 
 1. Clone the repository
 
-```bash
-git clone https://github.com/fieryhenry/bcps.git
-cd bcps
-```
+   ```bash
+   git clone https://github.com/fieryhenry/bcps.git
+   cd bcps
+   ```
 
 1. Install with pip
 
-If pip is in your PATH:
+   If pip is in your PATH:
 
-```bash
-pip install -e .
-```
+   ```bash
+   pip install -e .
+   ```
 
-If pip is not in your PATH:
+   If pip is not in your PATH:
 
-Windows:
+   Windows:
 
-```bash
-py -m pip install -e .
-```
+   ```bash
+   py -m pip install -e .
+   ```
 
-Everything else:
+   Everything else:
 
-```bash
-python -m pip install -e .
-```
+   ```bash
+   python -m pip install -e .
+   ```
 
 To pull the latest changes from the repository you can run the following
 command. Make sure you are in the bcps directory.
