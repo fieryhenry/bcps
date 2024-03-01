@@ -147,16 +147,18 @@ python -m bcps --debug
 ## Adding your own endpoints
 
 The server comes with a mailbox example blueprint in
-`src/bcps/blueprints/presents`. You should read the [Flask
-documentation](https://flask.palletsprojects.com) to understand how to create
-your own endpoints.
+[`src/bcps/blueprints/presents`](src/bcps/blueprints/presents.py). You should
+read the [Flask documentation](https://flask.palletsprojects.com) to understand
+how to create your own endpoints.
 
 Note that the frida script also forces the verification of the nyanko signture,
 so as long as the Nyanko-Signature header is present, the server will accept the
 request. (see present.py for an example of how to do this.)
 
-You should place your blueprints in the `src/bcps/blueprints` directory. You can
-then add the blueprint to the app in the `src/bcps/blueprints/__init__.py` file.
+You should place your blueprints in the
+[`src/bcps/blueprints`](src/bcps/blueprints) directory. You can then add the
+blueprint to the app in the
+[`src/bcps/blueprints/__init__.py`](src/bcps/blueprints/__init__.py) file.
 
 You can access the domain the game sent the original request to with
 the domain query parameter.
