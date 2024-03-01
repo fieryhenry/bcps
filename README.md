@@ -19,7 +19,7 @@ cd bcps
 If pip is in your PATH:
 
 ```bash
-pip install .
+pip install -e .
 ```
 
 If pip is not in your PATH:
@@ -27,13 +27,20 @@ If pip is not in your PATH:
 Windows:
 
 ```bash
-py -m pip install .
+py -m pip install -e .
 ```
 
 Everything else:
 
 ```bash
-python -m pip install .
+python -m pip install -e .
+```
+
+To pull the latest changes from the repository you can run the following
+command. Make sure you are in the bcps directory.
+
+```bash
+git pull
 ```
 
 ## Setting up the APK
