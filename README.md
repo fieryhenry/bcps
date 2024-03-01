@@ -168,8 +168,9 @@ package_version = request.args.get("package_version")
 ```
 
 You can also get the game's request handle with the `req_handle` query
-parameter. This probably isn't useful for most people, but it is there if you
-need it.
+parameter. This is used by the game to determine what function should be run
+after the request is completed. This probably isn't useful for most people, but
+it is there if you need it.
 
 ```python
 from flask import request
