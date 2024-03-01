@@ -1,10 +1,25 @@
 let func_name = "_ZN5Botan11PK_Verifier14verify_messageEPKhjS2_j" // 32 bit
 
-let url_regexes = "{{URL_REGEXES}}"
+let url_regexes = null;
+
 let server_url = "{{URL}}"
 
 if (is_64_bit()) {
     func_name = "_ZN5Botan11PK_Verifier14verify_messageEPKhmS2_m" // 64 bit
+}
+
+function get_url_regexes() {
+    let url = server_url + "/api/url_regexes";
+    try {
+        let data = download_file(url)
+        return JSON.parse(data);
+    }
+    catch (e) {
+        log(e.message);
+        log(e.stack);
+        log("Failed to download url regexes");
+        return [];
+    }
 }
 
 // Botan::PK_Verifier::verify_message(unsigned char const*, unsigned long, unsigned char const*, unsigned long)
@@ -40,11 +55,17 @@ function get_new_url(url, handle) {
     new_url += "req_handle=" + handle;
     new_url += "&domain=" + domain;
 
-    let package_version = getPackageVersion();
-    let package_name = getPackageName();
+    try {
+        let package_version = getPackageVersion();
+        new_url += "&package_version=" + package_version;
+    }
+    catch { }
 
-    new_url += "&package_version=" + package_version;
-    new_url += "&package_name=" + package_name;
+    try {
+        let package_name = getPackageName();
+        new_url += "&package_name=" + package_name;
+    }
+    catch { }
 
     return new_url;
 
@@ -54,6 +75,9 @@ Java.perform(function () {
     let MyActivity = Java.use("jp.co.ponos.battlecats.MyActivity");
 
     MyActivity["newHttpRequest"].implementation = function (method, url, timeout, headers, data, cookies, run_sync, stream) {
+        if (url_regexes == null) {
+            url_regexes = get_url_regexes();
+        }
         let handle = this.mNextRequestHandle.value;
         if (does_url_match(url)) {
             url = get_new_url(url, handle);

@@ -7,16 +7,14 @@ def setup(
     cc: tbcml.CC,
     gv: tbcml.GV,
     server_url: str,
-    url_regexes: Optional[list[str]] = None,
     apk_path: Optional[str] = None,
+    package_name: Optional[str] = None,
+    app_name: Optional[str] = None,
     adb: bool = False,
     adb_run_game: bool = False,
 ):
     if adb_run_game and not adb:
         raise ValueError("adb_run_game can only be True if adb is True")
-
-    if url_regexes is None:
-        url_regexes = []
 
     loader = tbcml.ModLoader(cc, gv)
 
@@ -28,14 +26,6 @@ def setup(
 
     script_content = script_content.replace("{{URL}}", server_url)
 
-    url_regexes_str = "["
-    for regex in url_regexes:
-        url_regexes_str += f'"{regex}", '
-    url_regexes_str = url_regexes_str.strip(", ")
-    url_regexes_str += "]"
-
-    script_content = script_content.replace('"{{URL_REGEXES}}"', url_regexes_str)
-
     script = tbcml.FridaScript(
         "Private Server",
         script_content,
@@ -46,10 +36,16 @@ def setup(
     mod = tbcml.Mod(
         "Battle Cats Private Server",
         "fieryhenry",
-        "Hooks into newHttpRequest to allow you to redirect https requests to your server",
+        description="A mod that redirects all matching urls to a custom server",
     )
 
     mod.add_script(script)
+
+    apk = loader.get_apk()
+    if package_name is not None:
+        apk.set_package_name(package_name)
+    if app_name is not None:
+        apk.set_app_name(app_name)
 
     print("Applying mod...")
     loader.apply(mod)
@@ -66,39 +62,42 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--cc",
-        help="The country code to use",
+        help="The country code of the apk",
         default="en",
         choices=["en", "jp", "kr", "tw"],
     )
     ap.add_argument(
         "--gv",
-        help="The game version to use",
+        help="The game version of the apk",
         default="13.1.1",
     )
-    ap.add_argument("--apk", help="The apk path to use")
-    ap.add_argument("--url", help="The server url to use")
+    ap.add_argument("--apk", help="The apk path to use if you already have one")
+    ap.add_argument("--url", help="The server url to send requests to", required=True)
     ap.add_argument(
-        "--regexes", help="The url regexes to filter for", nargs="*", default=[".*"]
+        "--package-name",
+        help="Set the package name of the apk. If blank, it will not be modified",
+    )
+    ap.add_argument(
+        "--app-name",
+        help="Set the app name of the apk. If blank, it will not be modified",
     )
     ap.add_argument(
         "--adb", help="If the apk should be installed with adb", action="store_true"
     )
     ap.add_argument(
-        "--adb_run_game",
+        "--adb-run-game",
         help="If the game should be run after installing with adb",
         action="store_true",
     )
 
     args = ap.parse_args()
-    if args.url is None:
-        raise ValueError("server_url is required")
-
     setup(
         args.cc,
         args.gv,
         args.url,
-        args.regexes,
         args.apk,
+        args.package_name,
+        args.app_name,
         args.adb,
         args.adb_run_game,
     )

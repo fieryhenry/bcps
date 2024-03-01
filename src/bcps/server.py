@@ -10,6 +10,16 @@ def index():
     return "Hello, World!"
 
 
+@app.route("/api/url_regexes")
+def get_regexes():
+    regexes = app.config.get("URL_REGEXES", [])  # type: ignore
+    return flask.jsonify(regexes)
+
+
+def set_regexes(regexes: list[str]):
+    app.config["URL_REGEXES"] = regexes
+
+
 def get_payload_headers() -> dict[str, str]:
     return {
         "Content-Type": "application/json",
@@ -43,7 +53,9 @@ def register_blueprints():
         add_blueprint(blueprint)
 
 
-def start(host: str, port: int):
+def start(host: str, port: int, regexes: Optional[list[str]] = None):
+    if regexes is not None:
+        set_regexes(regexes)
     register_blueprints()
     app.run(host=host, port=port)
 
