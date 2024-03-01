@@ -78,7 +78,7 @@ python scripts/setup_script.py --url https://custom_subdomain.serveo.net --regex
 Note that you can specify multiple regexes by separating them with a comma.
 
 ```bash
-python scripts/setup_script.py --url https://custom_subdomain.serveo.net --regex "presents","events"
+python scripts/setup_script.py --url https://custom_subdomain.serveo.net --regex "presents" "events"
 ```
 
 You can also specify the country code and game version. The country code is
