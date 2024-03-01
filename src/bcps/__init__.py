@@ -1,6 +1,5 @@
 __version__ = "0.0.1"
 
-from . import server
-from . import blueprints
+from bcps import server, blueprints
 
 __all__ = ["server", "blueprints"]

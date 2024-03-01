@@ -1,7 +1,7 @@
-from . import presents
+from bcps.blueprints import presents
 
 # Add more blueprints here
-# from . import <blueprint_name>
+# from bcps.blueprints import <blueprint_name>
 
 __blueprints__ = [
     presents.bp,
