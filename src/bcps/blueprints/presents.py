@@ -14,7 +14,7 @@ def presents():
                     {
                         "itemId": 22,
                         "itemCategory": 0,
-                        "amount": 100,
+                        "amount": 1000,
                         "title": "Cat food",
                     }
                 ],
