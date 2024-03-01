@@ -5,6 +5,12 @@ A private server for the mobile game The Battle Cats built with
 [tbcml](https://github.com/fieryhenry/tbcml), and
 [Frida](https://frida.re).
 
+Note that if you just want to have a custom mailbox, I suggest that you use
+[mailboxhack](https://github.com/fieryhenry/mailboxhack) instead as it doesn't
+need a private server.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/fieryhenry)
+
 ## Installation
 
 1. Clone the repository
@@ -144,6 +150,10 @@ The server comes with a mailbox example blueprint in
 `src/bcps/blueprints/presents`. You should read the [Flask
 documentation](https://flask.palletsprojects.com) to understand how to create
 your own endpoints.
+
+Note that the frida script also forces the verification of the nyanko signture,
+so as long as the Nyanko-Signature header is present, the server will accept the
+request. (see present.py for an example of how to do this.)
 
 You should place your blueprints in the `src/bcps/blueprints` directory. You can
 then add the blueprint to the app in the `src/bcps/blueprints/__init__.py` file.
