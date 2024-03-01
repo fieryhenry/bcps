@@ -53,11 +53,11 @@ def register_blueprints():
         add_blueprint(blueprint)
 
 
-def start(host: str, port: int, regexes: Optional[list[str]] = None):
+def start(host: str, port: int, debug: bool, regexes: Optional[list[str]] = None):
     if regexes is not None:
         set_regexes(regexes)
     register_blueprints()
-    app.run(host=host, port=port)
+    app.run(host=host, port=port, debug=debug)
 
 
 def add_blueprint(bp: flask.Blueprint):
@@ -65,4 +65,4 @@ def add_blueprint(bp: flask.Blueprint):
 
 
 if __name__ == "__main__":
-    start("0.0.0.0", 5000)
+    start("0.0.0.0", 5000, True, [".*"])

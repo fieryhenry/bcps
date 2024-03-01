@@ -132,6 +132,12 @@ respectively. The defaults are shown below.
 python -m bcps --host 0.0.0.0 --port 5000
 ```
 
+To run in debug mode you can use the `--debug` flag.
+
+```bash
+python -m bcps --debug
+```
+
 ## Adding your own endpoints
 
 The server comes with a mailbox example blueprint in

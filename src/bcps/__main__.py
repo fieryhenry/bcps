@@ -18,6 +18,12 @@ def main():
         default=5000,
     )
     parser.add_argument(
+        "--debug",
+        help="Run the server in debug mode",
+        action="store_true",
+    )
+
+    parser.add_argument(
         "--regexes",
         help="The urls to redirect to the private server",
         nargs="*",
@@ -25,7 +31,7 @@ def main():
     )
     args = parser.parse_args()
 
-    server.start(args.host, args.port, args.regexes)
+    server.start(args.host, args.port, args.debug, args.regexes)
 
 
 if __name__ == "__main__":
