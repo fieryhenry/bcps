@@ -1,12 +1,20 @@
 let func_name = "_ZN5Botan11PK_Verifier14verify_messageEPKhjS2_j" // 32 bit
+if (is_64_bit()) {
+    func_name = "_ZN5Botan11PK_Verifier14verify_messageEPKhmS2_m" // 64 bit
+}
+
+// Always verify the nyanko-signature
+// Botan::PK_Verifier::verify_message(unsigned char const*, unsigned long, unsigned char const*, unsigned long)
+Interceptor.attach(Module.findExportByName("libnative-lib.so", func_name), {
+    onLeave: function (retval) {
+        retval.replace(0x1)
+    }
+});
 
 let url_regexes = null;
 
 let server_url = "{{URL}}"
 
-if (is_64_bit()) {
-    func_name = "_ZN5Botan11PK_Verifier14verify_messageEPKhmS2_m" // 64 bit
-}
 
 function get_url_regexes() {
     let url = server_url + "/api/url_regexes";
@@ -22,12 +30,7 @@ function get_url_regexes() {
     }
 }
 
-// Botan::PK_Verifier::verify_message(unsigned char const*, unsigned long, unsigned char const*, unsigned long)
-Interceptor.attach(Module.findExportByName("libnative-lib.so", func_name), {
-    onLeave: function (retval) {
-        retval.replace(0x1)
-    }
-})
+
 
 function does_url_match(url) {
     for (let regex in url_regexes) {
