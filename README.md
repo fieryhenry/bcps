@@ -65,22 +65,6 @@ use this url in the `--url` option.
 python scripts/setup_script.py --url https://custom_subdomain.serveo.net
 ```
 
-You should also specify regexes that filter the requests to the server. This is
-by default set to `.*` which means all requests are sent to the private server.
-If you want to only send certain requests to the private server you can specify
-a regex to filter the requests. For example, if you only want to send mailbox
-requests you can use the following regex:
-
-```bash
-python scripts/setup_script.py --url https://custom_subdomain.serveo.net --regex "presents"
-```
-
-Note that you can specify multiple regexes by separating them with a comma.
-
-```bash
-python scripts/setup_script.py --url https://custom_subdomain.serveo.net --regex "presents" "events"
-```
-
 You can also specify the country code and game version. The country code is
 `en` by default and the game version is `13.1.1` by default. You can specify the
 country code and game version with the `--cc` and `--gv` options respectively.
@@ -104,6 +88,14 @@ start the game after the apk is installed.
 python scripts/setup_script.py --url https://custom_subdomain.serveo.net --adb --adb_run_game
 ```
 
+You can change the package name and app name with the `--package_name` and
+`--app_name` options respectively. The default package name is
+`jp.co.ponos.battlecatsen` and the default app name is `The Battle Cats` for en.
+
+```bash
+python scripts/setup_script.py --url https://custom_subdomain.serveo.net --package_name "jp.co.ponos.battlecatsen" --app_name "The Battle Cats" 
+```
+
 The game will log the url it is sending requests to. If you want to see this run
 `adb logcat` with the tag `tbcml` if you have adb setup.
 
@@ -117,6 +109,13 @@ adb logcat -s tbcml
 
 ```bash
 python -m bcps
+```
+
+You should pass in `--regexes`, which is a list to specify which urls should be
+redirected to the private server. The default is `.*` which is all urls.
+
+```bash
+python -m bcps --regexes "presents" "events"
 ```
 
 You can pass in a specific host and port with the `--host` and `--port` options
