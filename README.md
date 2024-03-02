@@ -155,6 +155,9 @@ Note that the frida script also forces the verification of the nyanko signture,
 so as long as the Nyanko-Signature header is present, the server will accept the
 request. (see present.py for an example of how to do this.)
 
+Note that any url that is redirected to the private server always starts with a
+prefix of `/api`.
+
 You should place your blueprints in the
 [`src/bcps/blueprints`](src/bcps/blueprints) directory. You can then add the
 blueprint to the app in the
