@@ -20,6 +20,13 @@ need a private server.
    cd bcps
    ```
 
+   To pull the latest changes from the repository you can run the following
+   command. Make sure you are in the bcps directory.
+
+   ```bash
+   git pull
+   ```
+
 1. Install with pip
 
    If pip is in your PATH:
@@ -41,13 +48,6 @@ need a private server.
    ```bash
    python -m pip install -e .
    ```
-
-To pull the latest changes from the repository you can run the following
-command. Make sure you are in the bcps directory.
-
-```bash
-git pull
-```
 
 ## Setting up the APK
 
